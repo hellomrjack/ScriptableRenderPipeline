@@ -1778,6 +1778,7 @@ namespace UnityEngine.Rendering.HighDefinition
             foreach (HDAdditionalLightData lightData in m_ScreenSpaceShadowsUnion)
             {
                 lightData.previousTransform = lightData.transform.localToWorldMatrix;
+                lightData.previousScreenSpaceShadowIndex = lightData.screenSpaceShadowIndex;
             }
         }
 
@@ -1996,17 +1997,17 @@ namespace UnityEngine.Rendering.HighDefinition
             else if (hdCamera.frameSettings.IsEnabled(FrameSettingsField.RayTracing) &&
                      VolumeManager.instance.stack.GetComponent<PathTracing>().enable.value)
             {
-                    // Update the light clusters that we need to update
-                    BuildRayTracingLightCluster(cmd, hdCamera);
+                // Update the light clusters that we need to update
+                BuildRayTracingLightCluster(cmd, hdCamera);
 
-                    // We only request the light cluster if we are gonna use it for debug mode
-                    if (FullScreenDebugMode.LightCluster == m_CurrentDebugDisplaySettings.data.fullScreenDebugMode && GetRayTracingClusterState())
-                    {
-                        HDRaytracingLightCluster lightCluster = RequestLightCluster();
-                        lightCluster.EvaluateClusterDebugView(cmd, hdCamera);
-                    }
+                // We only request the light cluster if we are gonna use it for debug mode
+                if (FullScreenDebugMode.LightCluster == m_CurrentDebugDisplaySettings.data.fullScreenDebugMode && GetRayTracingClusterState())
+                {
+                    HDRaytracingLightCluster lightCluster = RequestLightCluster();
+                    lightCluster.EvaluateClusterDebugView(cmd, hdCamera);
+                }
 
-                    RenderPathTracing(hdCamera, cmd, m_CameraColorBuffer, renderContext, m_FrameCount);
+                RenderPathTracing(hdCamera, cmd, m_CameraColorBuffer, renderContext, m_FrameCount);
             }
             else
             {
@@ -2517,6 +2518,7 @@ namespace UnityEngine.Rendering.HighDefinition
                 if (debugDisplaySettings.IsDebugDisplayRemovePostprocess())
                 {
                     currentFrameSettings.SetEnabled(FrameSettingsField.Postprocess, false);
+                    currentFrameSettings.SetEnabled(FrameSettingsField.CustomPass, false);
                 }
 
                 // Disable exposure if required
