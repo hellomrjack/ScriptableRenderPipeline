@@ -42,7 +42,7 @@ Rendering properties controls how the visual effect instance will render and rec
 
 #### Properties
 
-The properties category display any Property that have been defined in the Visual Effect Graph blackboard as Exposed Property. Every property can be overridden from its default value in order to customize the Visual Effect instance in the scene. Some properties can also be edited using Gizmos directly in the scene.
+The properties category display any Property that have been defined in the Visual Effect Graph Blackboard as Exposed Property. Every property can be overridden from its default value in order to customize the Visual Effect instance in the scene. Some properties can also be edited using Gizmos directly in the scene.
 
 | Item                 | Description                                                  |
 | -------------------- | ------------------------------------------------------------ |

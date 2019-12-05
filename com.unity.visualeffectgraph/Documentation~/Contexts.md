@@ -45,13 +45,13 @@ This section covers all the common settings of every kind of context. For more d
 
 ## Event
 
-Event Contexts only display a Name as a string that need to be called on the Component API in order to Send this event to the graph and activate a workflow from this node.
+Event Contexts only display a Name as a string that need to be called on the Component API in order to Send this event to the graph and activate a workflow from this Node.
 
 ## Spawn
 
 Spawn Contexts are standalone systems that have three States : Playing, Stopped and Delayed. 
 
-* **Looping** (Running) state means that the blocks are computed and will perform spawn of new particles
+* **Looping** (Running) state means that the Blocks are computed and will perform spawn of new particles
 * **Finished** (Idle) state means that the spawn machine is off and will not spawn particles
 * **DelayingBeforeLoop/DelayingAfterLoop** (Waiting) state stops spawning particles until the end of a user-set delay, then restarts spawning particles.
 
@@ -91,14 +91,14 @@ Setting a loop count, loop duration and / or delays will display new connectable
 
 GPU Event contexts are experimental contexts that connect inputs to output GPU Events from other systems. They differ from Traditional Spawn as they are computed by the GPU.  Only one kind of Spawn can be connected to an Initialize Context (GPU Event and Spawn/Events are mutually Exclusive) 
 
-> GPU Event contexts cannot be customized with blocks.
+> GPU Event contexts cannot be customized with Blocks.
 >
 
 ## Initialize
 
 Initialize Contexts will generate new particles based on **SpawnEvent** Data, computed from Events, Spawn or GPU Event contexts.
 
-> For example: upon receiving an order of creation of 200 new particles from a spawn context, the context will be processed and will result in executing the context's blocks for all 200 new particles.
+> For example: upon receiving an order of creation of 200 new particles from a spawn context, the context will be processed and will result in executing the context's Blocks for all 200 new particles.
 
 Initialize contexts can be customized using compatible **Blocks**.
 

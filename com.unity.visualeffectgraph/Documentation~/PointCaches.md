@@ -6,7 +6,7 @@
 
 Point Caches are a special Asset type that bundles a **Point Count**, and **One or Many AttributeMaps**, that contain every attribute value list, baked into textures.
 
-These point caches can be used in the graph using the **Point Cache** Operator, to access all these values, and so they can be read in **Attribute from Map** blocks for instance.
+These point caches can be used in the graph using the **Point Cache** Operator, to access all these values, and so they can be read in **Attribute from Map** Blocks for instance.
 
 ## Point Cache Assets
 
