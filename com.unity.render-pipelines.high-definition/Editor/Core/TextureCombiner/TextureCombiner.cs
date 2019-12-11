@@ -10,7 +10,7 @@ namespace UnityEditor.Rendering
         static Texture2D _midGrey;
 
         /// <summary>
-        /// Returns a 1 by 1 mid grey (0.5, 0.5, 0.5, 1) texture.
+        /// Returns a 1 by 1 mid grey (0.5, 0.5, 0.5, 1) Texture.
         /// </summary>
         public static Texture2D midGrey
         {
@@ -26,7 +26,7 @@ namespace UnityEditor.Rendering
         private static Dictionary<Color, Texture2D> singleColorTextures = new Dictionary<Color, Texture2D>();
 
         /// <summary>
-        /// Return a 1 by 1 texture of specified color.
+        /// Return a 1 by 1 Texture of specified color.
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -52,8 +52,8 @@ namespace UnityEditor.Rendering
         }
 
         /// <summary>
-        /// Returns the texture assigned to the property "propertyName" of "srcMaterial".
-        /// If matching property is found, or no texture is assigned, returns a 1 by 1 texture of "fallback" color.
+        /// Returns the Texture assigned to the property "propertyName" of "srcMaterial".
+        /// If no matching property is found, or no Texture is assigned, returns a 1 by 1 Texture of "fallback" color.
         /// </summary>
         /// <param name="srcMaterial"></param>
         /// <param name="propertyName"></param>
@@ -65,8 +65,8 @@ namespace UnityEditor.Rendering
         }
 
         /// <summary>
-        /// Returns the texture assigned to the property "propertyName" of "srcMaterial".
-        /// If matching property is found, or no texture is assigned, returns the "fallback" texture.
+        /// Returns the Texture assigned to the property "propertyName" of "srcMaterial".
+        /// If no matching property is found, or no Texture is assigned, returns the "fallback" Texture.
         /// </summary>
         /// <param name="srcMaterial"></param>
         /// <param name="propertyName"></param>
@@ -113,7 +113,7 @@ namespace UnityEditor.Rendering
         };
 
         /// <summary>
-        /// Returns true if the texture has an alpha channel, false otherwise.
+        /// Returns true if the Texture has an alpha channel, false otherwise.
         /// </summary>
         /// <param name="tex"></param>
         /// <returns></returns>
@@ -161,13 +161,13 @@ namespace UnityEditor.Rendering
         /// <summary>
         /// Creates a TextureCombiner object.
         /// </summary>
-        /// <param name="rSource">Source texture for the RED output.</param>
+        /// <param name="rSource">Source Texture for the RED output.</param>
         /// <param name="rChanel">Channel index to use for the RED output.</param>
-        /// <param name="gSource">Source texture for the GREEN output.</param>
+        /// <param name="gSource">Source Texture for the GREEN output.</param>
         /// <param name="gChanel">Channel index to use for the GREEN output.</param>
-        /// <param name="bSource">Source texture for the BLUE output.</param>
+        /// <param name="bSource">Source Texture for the BLUE output.</param>
         /// <param name="bChanel">Channel index to use for the BLUE output.</param>
-        /// <param name="aSource">Source texture for the ALPHA output.</param>
+        /// <param name="aSource">Source Texture for the ALPHA output.</param>
         /// <param name="aChanel">Channel index to use for the ALPHA output.</param>
         /// <param name="bilinearFilter">Use bilinear filtering when combining (default = true).</param>
         public TextureCombiner(Texture rSource, int rChanel, Texture gSource, int gChanel, Texture bSource, int bChanel, Texture aSource, int aChanel, bool bilinearFilter = true)
@@ -199,7 +199,7 @@ namespace UnityEditor.Rendering
 
         /// <summary>
         /// Process the TextureCombiner.
-        /// The texture asset is created at "savePath", and the texture object is returned.
+        /// The Texture asset is created at "savePath", and the Texture object is returned.
         /// </summary>
         /// <param name="savePath">Path to save the texture asset.</param>
         /// <returns></returns>
