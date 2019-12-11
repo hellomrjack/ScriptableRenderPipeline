@@ -26,9 +26,9 @@ namespace UnityEditor.Rendering
         private static Dictionary<Color, Texture2D> singleColorTextures = new Dictionary<Color, Texture2D>();
 
         /// <summary>
-        /// Return a 1 by 1 Texture of specified color.
+        /// Returns a 1 by 1 Texture that is the color that you pass in.
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="color">The color that Unity uses to create the Texture.</param>
         /// <returns></returns>
         public static Texture2D TextureFromColor(Color color)
         {
@@ -55,9 +55,9 @@ namespace UnityEditor.Rendering
         /// Returns the Texture assigned to the property "propertyName" of "srcMaterial".
         /// If no matching property is found, or no Texture is assigned, returns a 1 by 1 Texture of "fallback" color.
         /// </summary>
-        /// <param name="srcMaterial"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="fallback"></param>
+        /// <param name="srcMaterial">The Material to get the Texture from.</param>
+        /// <param name="propertyName">The name of the Texture property.</param>
+        /// <param name="fallback">The fallback color that Unity uses to create a Texture if it could not find the Texture property on the Material.</param>
         /// <returns></returns>
         public static Texture GetTextureSafe(Material srcMaterial, string propertyName, Color fallback)
         {
@@ -68,9 +68,9 @@ namespace UnityEditor.Rendering
         /// Returns the Texture assigned to the property "propertyName" of "srcMaterial".
         /// If no matching property is found, or no Texture is assigned, returns the "fallback" Texture.
         /// </summary>
-        /// <param name="srcMaterial"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="fallback"></param>
+        /// <param name="srcMaterial">The Material to get the Texture from.</param>
+        /// <param name="propertyName">The name of the Texture property.</param>
+        /// <param name="fallback">The fallback color that Unity uses to create a Texture if it could not find the Texture property on the Material.</param>
         /// <returns></returns>
         public static Texture GetTextureSafe(Material srcMaterial, string propertyName, Texture fallback)
         {
@@ -113,9 +113,9 @@ namespace UnityEditor.Rendering
         };
 
         /// <summary>
-        /// Returns true if the Texture has an alpha channel, false otherwise.
+        /// Specifies whether the Texture has an alpha channel or not. Returns true if it does and false otherwise.
         /// </summary>
-        /// <param name="tex"></param>
+        /// <param name="tex">The Texture for this function to check.</param>
         /// <returns></returns>
         public static bool TextureHasAlpha(Texture2D tex)
         {
@@ -199,9 +199,9 @@ namespace UnityEditor.Rendering
 
         /// <summary>
         /// Process the TextureCombiner.
-        /// The Texture asset is created at "savePath", and the Texture object is returned.
+        /// Unity creates the Texture Asset at the "savePath", and returns the Texture object.
         /// </summary>
-        /// <param name="savePath">Path to save the texture asset.</param>
+        /// <param name="savePath">The path to save the Texture Asset to, relative to the Project folder.</param>
         /// <returns></returns>
         public Texture2D Combine(string savePath)
         {
