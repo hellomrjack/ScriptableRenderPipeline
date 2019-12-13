@@ -543,7 +543,7 @@ namespace UnityEngine.Rendering.Universal
                 ClearFlag finalClearFlag = ClearFlag.None;
                 Color finalClearColor;
 
-                if (passColorAttachment == m_CameraColorTarget && (m_FirstTimeCameraColorTargetIsBound || (cameraData.isXRMultipass && m_XRRenderTargetNeedsClear) ))
+                if (passColorAttachment == m_CameraColorTarget && (m_FirstTimeCameraColorTargetIsBound || (cameraData.isXRMultipass && m_XRRenderTargetNeedsClear)))
                 {
                     m_FirstTimeCameraColorTargetIsBound = false; // register that we did clear the camera target the first time it was bound
 
@@ -556,10 +556,13 @@ namespace UnityEngine.Rendering.Universal
                     finalClearColor = CoreUtils.ConvertSRGBToActiveColorSpace(camera.backgroundColor);
                     firstTimeStereo = true;
 
-                    // m_CameraColorTarget can be an opaque pointer to a RenderTexture with depth-surface.
-                    // We cannot infer this information here, so we must assume both camera color and depth are first-time bound here (this is the legacy behaviour).
-                    m_FirstTimeCameraDepthTargetIsBound = false;
-                    finalClearFlag |= (cameraClearFlag & ClearFlag.Depth);
+                    if (m_FirstTimeCameraDepthTargetIsBound || (cameraData.isXRMultipass && m_XRRenderTargetNeedsClear))
+                    {
+                        // m_CameraColorTarget can be an opaque pointer to a RenderTexture with depth-surface.
+                        // We cannot infer this information here, so we must assume both camera color and depth are first-time bound here (this is the legacy behaviour).
+                        m_FirstTimeCameraDepthTargetIsBound = false;
+                        finalClearFlag |= (cameraClearFlag & ClearFlag.Depth);
+                    }
 
                     m_XRRenderTargetNeedsClear = false; // register that the XR camera multi-pass target does not need clear any more (until next call to BeginXRRendering)
                 }
@@ -569,7 +572,7 @@ namespace UnityEngine.Rendering.Universal
                     finalClearColor = renderPass.clearColor;
                 }
 
-                if (passDepthAttachment == m_CameraDepthTarget && m_FirstTimeCameraDepthTargetIsBound )
+                if ((passDepthAttachment == m_CameraDepthTarget || passColorAttachment == m_CameraDepthTarget) && m_FirstTimeCameraDepthTargetIsBound)
                 // note: should be split m_XRRenderTargetNeedsClear into m_XRColorTargetNeedsClear and m_XRDepthTargetNeedsClear and use m_XRDepthTargetNeedsClear here?
                 {
                     m_FirstTimeCameraDepthTargetIsBound = false;
@@ -581,7 +584,7 @@ namespace UnityEngine.Rendering.Universal
                     // finalClearFlag |= (cameraClearFlag & ClearFlag.Color);  // <- m_CameraDepthTarget is never a color-surface, so no need to add this here.
 
                     //m_XRRenderTargetNeedsClear = false; // note: is it possible that XR camera multi-pass target gets clear first when bound as depth target?
-                                                          //       in this case we might need need to register that it does not need clear any more (until next call to BeginXRRendering)
+                    //       in this case we might need need to register that it does not need clear any more (until next call to BeginXRRendering)
                 }
                 else
                     finalClearFlag |= (renderPass.clearFlag & ClearFlag.Depth);
