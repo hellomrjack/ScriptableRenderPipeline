@@ -23,12 +23,12 @@ The Visual Effect Graph comes with pre-built System templates that you can add t
 
 ![](Images/SystemAddTemplate.png)
 
-## System spaces
+## System simulation spaces
 
 Some Systems use a simulation space property to define the reference space that it uses to simulate its contents:
 
-* Local space Systems simulate the effect locally to the GameObject that holds the [Visual Effect component](VisualEffectComponent.md).
-* World space Systems simulate the effect independently of the GameObject that holds the [Visual Effect component](VisualEffectComponent.md).
+* **Local space** Systems simulate the effect locally to the GameObject that holds the [Visual Effect component](VisualEffectComponent.md).
+* **World space** Systems simulate the effect independently of the GameObject that holds the [Visual Effect component](VisualEffectComponent.md).
 
 Regardless of the System's simulation space, you can use [Spaceable Properties](Properties.md#spaceable-properties) to access Local or World Values.
 
