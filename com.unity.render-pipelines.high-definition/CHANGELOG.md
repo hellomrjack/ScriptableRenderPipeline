@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added new parameters to the Physically Based Sky
 - Added Reflections to the DXR Wizard
 - Added the possibility to have ray traced colored and semi-transparent shadows on directional lights.
+- Added a check in the custom post process template to throw an error if the default shader is not found.
 
 ### Fixed
 - Sorting, undo, labels, layout in the Lighting Explorer.
@@ -247,6 +248,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed crash when pushing bounce count higher than 1 for ray traced GI or reflections
 - Fixed PCSS softness scale so that it better match ray traced reference for punctual lights. 
 - Fixed exposure management for the path tracer
+- Fixed AxF material UI containing two advanced options settings.
+- Fixed an issue where cached sky contexts were being destroyed wrongly, breaking lighting in the LookDev
+- Fixed issue that clamped PCSS softness too early and not after distance scale.
+- Fixed fog affect transparent on HD unlit master node
+- Fixed custom post processes re-ordering not saved.
+- Fixed NPE when using scalable settings
+- Fixed an issue where PBR sky precomputation was reset incorrectly in some cases causing bad performance.
 - Fixed corruption of AO in baked probes.
 
 ### Changed
